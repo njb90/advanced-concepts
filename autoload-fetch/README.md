@@ -1,8 +1,9 @@
+https://www.beckypeltz.me/advanced-concepts/autoload-fetch/images/pic.jpg
 
 
-https://res.cloudinary.com/picturecloud7/image/fetch/https://www.beckypeltz.me/advanced-concepts/autoload-fetch/images/pic.png
+https://res.cloudinary.com/picturecloud7/image/fetch/https://www.beckypeltz.me/advanced-concepts/autoload-fetch/images/pic.jpg
 
-https://res.cloudinary.com/picturecloud7/image/fetch/e_colorize,co_red,l_text:Arial_80:Flowers/https://www.beckypeltz.me/advanced-concepts/autoload-fetch/images/pic.png
+https://res.cloudinary.com/picturecloud7/image/fetch/e_colorize,co_red,l_text:Arial_80:Writing%20Tool/https://www.beckypeltz.me/advanced-concepts/autoload-fetch/images/pic.jpg
 
 https://res.cloudinary.com/picturecloud7/image/fetch/https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png
 
