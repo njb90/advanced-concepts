@@ -7,7 +7,8 @@ Use Fetch and autoload to display an image on the web
 Change the underlying image but leave the name the same.  Do either autofetch or upload pick up the change?
 
 AUTOUPLOAD
-https://res.cloudinary.com/picturecloud7/image/upload/autoupload-test/pic.jpg 
+https://res.cloudinary.com/picturecloud7/image/upload/autoupload-test/images/pic.jpg
+looks like a black pen
 
 FETCH
 https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/images/pic.jpg
