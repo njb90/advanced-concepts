@@ -1,6 +1,9 @@
 Exercise 1
-Set up autoload folder
+- Set up autoload folder
 https://cloudinary.com/documentation/fetch_remote_images#configuring_auto_upload_url_mapping
+
+- request the url
+- run an upload with node
 
 Use Fetch and autoload to display an image on the web
 
@@ -31,3 +34,8 @@ Access from Accunt B - using remote and fetch
 
 https://cloudinary.com/documentation/fetch_remote_images
 
+Source of Truth
+Caching and updating
+Cost - no savings with fetch even though not available in ML
+ML for autoupload allows managment
+Both can do on the fly transformations
