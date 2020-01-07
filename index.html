@@ -21,10 +21,22 @@
     <div>
       <video width="320" height="220" controls>
         <source
-          src="./autoupload-fetch/video/pexels-beach-video.mp4"
+          src="./autoupload-fetch/video/sledding.mp4"
           type="video/mp4"
         />
       </video>
     </div>
+    <div id="raw-json"></div>
+    <script>
+    document.addEventListener("DOMContentLoaded",function(){
+        fetch('https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/raw/data.json')
+  .then((response) => {
+    return response.json();
+  })
+  .then((myJson) => {
+    document.querySelector("#raw-json").innerHTML = JSON.stringify(myJson);
+  });
+    })
+    </script>
   </body>
 </html>
