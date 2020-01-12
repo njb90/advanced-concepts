@@ -20,23 +20,25 @@
 
     <div>
       <video width="320" height="220" controls>
-        <source
-          src="./autoupload-fetch/video/sledding.mp4"
-          type="video/mp4"
-        />
+        <source src="./autoupload-fetch/video/sledding.mp4" type="video/mp4" />
       </video>
     </div>
     <div id="raw-json"></div>
+    <img src='http://res.cloudinary.com/picturecloud7/image/upload/c_fill,f_auto,h_300,q_auto,w_300/v1//autoupload-test/images/pic' height='300' width='300'/>
     <script>
-    document.addEventListener("DOMContentLoaded",function(){
-        fetch('https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/raw/data.json')
-  .then((response) => {
-    return response.json();
-  })
-  .then((myJson) => {
-    document.querySelector("#raw-json").innerHTML = JSON.stringify(myJson);
-  });
-    })
+      document.addEventListener("DOMContentLoaded", function() {
+        fetch(
+          "https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/raw/data.json"
+        )
+          .then(response => {
+            return response.json();
+          })
+          .then(myJson => {
+            document.querySelector("#raw-json").innerHTML = JSON.stringify(
+              myJson
+            );
+          });
+      });
     </script>
   </body>
 </html>
