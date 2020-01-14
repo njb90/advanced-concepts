@@ -14,5 +14,5 @@ This folder contains asset folders that can be served using github.io.  To turn 
 
 To use the scripts for exercises on Auto Upload management API's 
 1. `npm install`
-2. add and .env file to this directory and copy your CLOUDINARY_URL from your Web UI Dashboard.
+2. add your CLOUDINARY_URL string from your Web UI Dashboard to the .env file in the root of this project
 3. make changes to script as needed for your asset and folder names 
