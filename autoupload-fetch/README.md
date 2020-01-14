@@ -1,41 +1,18 @@
-Exercise 1
-- Set up autoload folder
-https://cloudinary.com/documentation/fetch_remote_images#configuring_auto_upload_url_mapping
+# Advanced Concepts: Auto Upload and Fetch
+This folder contains data and scripts to use with exercises in Advanced Concepts workshop.
 
-- request the url
-- run an upload with node
+## Web Server
+This folder contains asset folders that can be served using github.io.  To turn on github.io service after copying this repo into your account:
+1. go to settings
+2. scroll down to github pages
+3. select `master branch` from source
+4. check enforce HTTPS if you are using a CNAME for your github.io repo
+5. you should be able to serve the assets using this URL:
+```https://<domain name | accountname.github.io>/advanced-concepts/<images | raw | video>```
 
-Use Fetch and autoload to display an image on the web
+## Auto Upload Management
 
-Change the underlying image but leave the name the same.  Do either autofetch or upload pick up the change?
-
-AUTOUPLOAD
-https://res.cloudinary.com/picturecloud7/image/upload/autoupload-test/images/pic.jpg
-looks like a black pen
-
-FETCH
-https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/images/pic.jpg
-
-
-https://res.cloudinary.com/picturecloud7/image/fetch/https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/images/pic.jpg
-
-https://res.cloudinary.com/picturecloud7/image/fetch/e_colorize,co_red,l_text:Arial_80:Writing%20Tool/https://www.beckypeltz.me/advanced-concepts/autoupload-fetch/images/pic.jpg
-
-https://res.cloudinary.com/picturecloud7/image/fetch/https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png
-
-https://res.cloudinary.com/picturecloud7/image/fetch/l_text:Arial_80:Flowers/https://upload.wikimedia.org/wikipedia/commons/1/13/Benedict_Cumberbatch_2011.png
-
-
-
-Upload an image in account A
-Create a url that from account B that fetches/remote it
-Upload a new image with same public id to account A
-Access from Accunt B - using remote and fetch
-
-https://cloudinary.com/documentation/fetch_remote_images
-
-Source of Truth
-Caching and updating
-Cost - no savings with fetch even though not available in ML
-ML for autoupload allows managment
-Both can do on the fly transformations
+To use the scripts for exercises on Auto Upload management API's 
+1. `npm install`
+2. add and .env file to this directory and copy your CLOUDINARY_URL from your Web UI Dashboard.
+3. make changes to script as needed for your asset and folder names 
