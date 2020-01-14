@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>HLS Cloudinary Video Player</title>
+
+  <!-- Bootstrap -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link href="./css/cld-video-player.min.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+  <!-- 
+<link href="node_modules/cloudinary-video-player/dist/cld-video-player.min.css" rel="stylesheet">
+<script src="node_modules/lodash/lodash.js" type="text/javascript"></script>
+<script src="node_modules/cloudinary-core/cloudinary-core.js" type="text/javascript"></script>
+<script src="node_modules/cloudinary-video-player/dist/cld-video-player.min.js" 
+    type="text/javascript"></script> -->
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body>
+  <div class="container">
+    <a href="index.html">
+      << Back to examples index</a> <h1>Cloudinary Video Player</h1>
+        <h2>Adaptive streaming: HLS</h2>
+        <h3>Run this in Safari and refresh network tab to see effect.</h3>
+        <p>The player supports adaptive streaming formats such as HLS and MPEG-DASH: <br />
+          <b>HLS</b> is supported out-of-the-box and is already bundled in the player's package. <br />
+          <b>MPEG-DASH</b> support can be added by including 'dash.js' and 'videojs-contrib-dash' packages (example
+          below).<br /><br />
+          Simply set 'sourceTypes' to the desired format ('dash' or 'hls'). You can define a desired streaming
+          profile ('sd', 'hd', etc') using the 'transformation' param.</p>
+
+        <div class="row video-container">
+          <video id="example-player-hls" controls muted width="680" height="400"
+            class="cld-video-player cld-video-player-skin-dark">
+          </video>
+        </div>
+
+
+
+        <!-- Cloudinary Video Player Dependencies -->
+        <script type="text/javascript" src="./js/cloudinary-core-shrinkwrap.min.js"></script>
+        <script type="text/javascript" src="./js/cld-video-player.min.js"></script>
+        <script type="text/javascript" src="./js/dash.all.min.js"></script>
+        <script type="text/javascript" src="./js/videojs-dash.min.js"></script>
+
+        <!-- Actual code -->
+        <script type="text/javascript">
+          var cld = cloudinary.Cloudinary.new({
+            cloud_name: 'miki-cloudinary'
+          });
+
+          // Initialize player
+          var playerHls = cld.videoPlayer('example-player-hls');
+
+          // Modify player source
+          playerHls.source('oceans', {
+            sourceTypes: ['hls'],
+            transformation: {
+              streaming_profile: 'hd'
+            },
+            info: {
+              title: "HLS"
+            }
+          }).play();
+        </script>
+</body>
+
+</html>
