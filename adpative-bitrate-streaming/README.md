@@ -30,4 +30,14 @@ then to copy rquired fiels to into local `js` and `css` directories using
 
 
 
+<link href="https://unpkg.com/cloudinary-video-player@1.3.3/dist/cld-video-player.min.css" 
+   rel="stylesheet">
+<script src="https://unpkg.com/cloudinary-core@2.6.3/cloudinary-core-shrinkwrap.min.js" 
+   type="text/javascript"></script>
+<script src="https://unpkg.com/cloudinary-video-player@1.3.3/dist/cld-video-player.min.js" 
+   type="text/javascript"></script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/dashjs/3.0.0/dash.all.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.9.2/videojs-dash.min.js" 
+    type="text/javascript">  
+</script>
