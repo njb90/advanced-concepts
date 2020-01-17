@@ -35,51 +35,32 @@
     <!-- Actual code -->
     <script type="text/javascript">
       var cld = cloudinary.Cloudinary.new({
-    cloud_name: 'miki-cloudinary'
-});
+        cloud_name: 'miki-cloudinary'
+      });
 
-var playerDash = cld.videoPlayer('example-player', {
+      var playerDash = cld.videoPlayer('example-player', {
+        autoplay: true,
+        showLogo: false,
+        hideContextMenu: true,
+        controls: false,
+      }).width(300)
 
-autoplay: true,
-
-showLogo: false,
-
-hideContextMenu: true,
-
-controls : false,
-
-}).width(300)
-
-   /*  var sources = [{publicId: 'videos/3555' ,
-    sourceTypes: ['hls'],
-    sourceTransformation: {'hls':[{streaming_profile: 'hd'}]
-    }}
-       ] */
-   
- /*  var sources = {publicId: 'oceans', transformation: { angle: 45 }, 
-    sourceTypes: ["hls"] ,
-    sourceTransformation: {'hls':[{streaming_profile: 'hd'}]}
-    } */
-   
-     var sources = [{publicId: 'oceans' ,sourceTypes: ['hls'],sourceTransformation: {'hls':[{streaming_profile: 'hd'}]}}
-   ]
-   playerDash.playlist(sources,{
+      var sources = [{
+        publicId: 'oceans',
+        sourceTypes: ['hls'],
+        sourceTransformation: {
+          'hls': [{
+            streaming_profile: 'hd'
+          }]
+        }
+      }]
+      playerDash.playlist(sources, {
         autoplay: true,
         autoAdvance: true,
         info: {
-            title: "HLS"
+          title: "HLS"
         }
-    }).play()
-
-     /*  playerDash.source('oceans', {
-            sourceTypes: ['hls'],
-            transformation: {
-              streaming_profile: 'hd'
-            },
-            info: {
-              title: "HLS"
-            }
-          }).play(); */
+      }).play()
     </script>
 </body>
 
