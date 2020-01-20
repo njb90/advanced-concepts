@@ -1,17 +1,9 @@
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 
+// choose a image in a remote media subfolder and rename it so 
+// that is is located directly under remote-media
 
-// auto fetch an image using a pexels photo
-// https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg
-// https://res.cloudinary.com/picturecloud7/image/upload/remote-media/102104/pexels-photo-102104.jpeg
-// got look at it in media library - it's cached under with that URL as the key
-
-// rename it 
-// Cloudinary::Uploader.upload('<remote URL>', public_id: "<the same public ID>", invalidate: true, callback)
-
-// https://support.cloudinary.com/hc/en-us/community/posts/360048854951-Auto-Upload-and-Public-ID
-// public id is <mapped folder>/<any subfolder>/<asset without extension
 cloudinary.uploader.rename('remote-media/102104/pexels-photo-102104',
     'remote-media/apple',
     { invalidate: true },
