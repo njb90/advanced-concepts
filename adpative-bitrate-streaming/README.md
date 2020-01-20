@@ -41,3 +41,5 @@ then to copy rquired fiels to into local `js` and `css` directories using
 <script src="https://cdnjs.cloudflare.com/ajax/libs/videojs-contrib-dash/2.9.2/videojs-dash.min.js" 
     type="text/javascript">  
 </script>
+
+[Streaming Profile](https://cloudinary.com/documentation/video_manipulation_and_delivery#predefined_streaming_profiles)
