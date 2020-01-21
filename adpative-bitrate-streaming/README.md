@@ -1,9 +1,17 @@
 # Adaptive Bitrate Streaming
 
+## Live code from this repository
+1. [mpeg-dash](https://www.beckypeltz.me/advanced-concepts/adpative-bitrate-streaming/adaptive-streaming-mpeg.html)  
+2. [hls](https://www.beckypeltz.me/advanced-concepts/adpative-bitrate-streaming/adaptive-streaming-hls.html)  
+3. [fallback](https://www.beckypeltz.me/advanced-concepts/adpative-bitrate-streaming/adpative-fallback-hls-first.html)
+
 Using the Cloudinary Video player in your client allows you to take advantage of adaptive bitrate streaming.  
 
 ## Setup
 
+## helpful code
+[Code pen with sample video code](https://codepen.io/team/Cloudinary/project/full/XLYMQV/)
+[Code pen with Adpative Streaming](https://codepen.io/team/Cloudinary/project/full/XLYMQV/)
 
 `npm install lodash cloudinary-core cloudinary-video-player dashjs videojs-contrib-dash`
 
