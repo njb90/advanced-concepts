@@ -1,4 +1,4 @@
-//test public_id is dolphin which is authenticated - so transformations are allowed
+//test public_id is dolphin which is authenticated - so transformations are NOT allowed
 //transformation is picked up from already dervice transformation
 const crypto = require('crypto');
 const cloudinary = require('cloudinary').v2;
@@ -6,6 +6,7 @@ require('dotenv').config();
 
 //dolphin is authenticated 
 //must choose a transformation that already exists 
+//hand coded signature
 transformation = "c_mfit,h_400,q_auto,w_400";
 public_id = "dolphin";
 secret = process.env.API_SECRET;
@@ -18,6 +19,7 @@ url = ['https://res.cloudinary.com/picturecloud7/image/authenticated',signature,
 console.log("hand  code:",url)
 
 // dolphin requires signing 
+// helper signature
 console.log("cloudinary:", cloudinary.url("dolphin", {
   type: "authenticated",
   secure: true,
