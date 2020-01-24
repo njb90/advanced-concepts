@@ -1,3 +1,4 @@
+//docs: https://cloudinary.com/documentation/upload_images#update_already_uploaded_images
 //test public_id is dolphin which is authenticated - so transformations are NOT allowed
 //transformation is picked up from already dervice transformation
 const crypto = require('crypto');
