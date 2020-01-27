@@ -3,6 +3,7 @@
 //transformation is picked up from already dervice transformation
 const crypto = require('crypto');
 const cloudinary = require('cloudinary').v2;
+const URLSafeBase64 = require('urlsafe-base64');
 require('dotenv').config();
 
 //dolphin is authenticated 
@@ -13,8 +14,11 @@ public_id = "dolphin";
 secret = process.env.API_SECRET;
 to_sign = [transformation, public_id].join("/") + secret;
 console.log("to_sign",to_sign)
+
 let sha1 = crypto.createHash('sha1').update(to_sign,"binary").digest('hex');
-let s = Buffer.from(sha1).toString('base64').slice(0, 8)
+let s = URLSafeBase64.encode(crypto.createHash('sha1').update(to_sign).digest()).slice(0,8);
+
+// let s = Buffer.from(sha1).toString('base64').slice(0, 8)
 let signature = 's--' + s + '--'
 url = ['https://res.cloudinary.com/picturecloud7/image/authenticated',signature,transformation, public_id].join("/")
 console.log("hand  code:",url)

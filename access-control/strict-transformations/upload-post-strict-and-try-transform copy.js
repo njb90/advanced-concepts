@@ -14,8 +14,8 @@ cloudinary.uploader.upload('https://images.pexels.com/photos/34809/loro-park-orc
     console.log(uploadResult);
     // expect a 401/404 because the strict transform is enabled
     let url = cloudinary.url(`${uploadResult.public_id}`, {
-      secure: true, width: 300,
-      height: 300,
+      secure: true, width: 100,
+      height: 100,
       quality: "auto",
       fetch_format: "auto",
       crop: "mfit"
