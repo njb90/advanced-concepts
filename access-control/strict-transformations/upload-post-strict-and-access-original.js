@@ -1,10 +1,10 @@
 // upload a file after enabling Strict Transformations
-// attempt to access a transformation
+// access via secure_url and cloudinary.url - no signing
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const open = require('open');
 
-//use upload API to upload a private asset
+//use upload API to upload a public asset
 
 cloudinary.uploader.upload('https://images.pexels.com/photos/712367/pexels-photo-712367.jpeg', {
   public_id: 'jellyfish',
