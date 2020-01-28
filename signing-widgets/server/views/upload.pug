@@ -1,0 +1,41 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p #{timestamp}
+  p #{signature}
+  div#upload_widget_opener
+
+  script(type="text/javascript").
+    const CLOUDNAME = "picturecloud7";
+    const API_KEY = "944887911222188";
+    const USERNAME = "rebeccapeltz@gmail.com";
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        e => {
+          $("#upload_widget_opener").cloudinary_upload_widget(
+            {
+              cloudName: CLOUDNAME,
+              apiKey: API_KEY,
+              cropping: false,
+              uploadSignature: "#{signature}",
+              uploadSignatureTimestamp: "#{timestamp}",
+              sources: [
+                    "local",
+                    "url",
+                    "camera"
+              ],
+            },
+            (error, result) => {
+              if (error){
+                console.log("error", error);
+              } else {
+                console.log(result);
+              }
+            }
+          );
+        }
+      );
+    

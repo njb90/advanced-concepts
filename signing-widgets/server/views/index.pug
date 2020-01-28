@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  p #{timestamp}
+  p #{signature}
+  button#ml-button
+
+  script(type="text/javascript").
+    const CLOUDNAME = "picturecloud7";
+    const API_KEY = "944887911222188";
+    const USERNAME = "rebeccapeltz@gmail.com";
+
+    this.mlWidget = cloudinary.createMediaLibrary({
+      cloud_name: CLOUDNAME,
+      api_key: API_KEY,
+      username: USERNAME,
+      timestamp: "#{timestamp}",
+      signature: "#{signature}",
+      button_class: "myBtn",
+      button_caption: "Select Image or Video",
+      insert_transformation: true
+      }, 
+      {
+          insertHandler: function (data) {
+          data.assets.forEach(asset => {
+            console.log("Inserted asset:", JSON.stringify(asset, null, 2));
+          });
+        }
+      },
+      document.getElementById("ml-button")
+      );
