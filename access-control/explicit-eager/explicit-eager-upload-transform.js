@@ -3,9 +3,7 @@ const cloudinary = require('cloudinary').v2;
 const open = require('open')
 
 // explicit method using eager parameter to create a transformation
-
-// run the explicit eager transform creation
-cloudinary.uploader.explicit("killer-whale",
+cloudinary.uploader.explicit("shark",
   {
     type: "upload",
     eager: [{
@@ -17,19 +15,20 @@ cloudinary.uploader.explicit("killer-whale",
     }]
   },
   function (error, result) { 
+    
+
     //create a url with the eagerly created transformation
     //from above
     //expect that this will return the transform 200 
     //need to sign the url whether type above is "upload" or "private"
 
-    let url = cloudinary.url("killer-whale",{
+    let url = cloudinary.url("shark",{
       width: 400,
       height: 400,
       quality: "auto",
-      fetch_format: "auto",
-      crop: "mfit",
-      sign_url: true
-    })
+      format: `${result.format}`,
+      crop: "mfit"
+        })
     console.log(result, error); 
     console.log(url)
     open(url)

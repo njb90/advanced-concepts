@@ -14,12 +14,24 @@ cloudinary.uploader.upload('https://images.pexels.com/photos/712367/pexels-photo
   .then(uploadResult => {
     console.log(uploadResult);
     console.log(uploadResult.secure_url);
-    // no auth error
+    // Consider 3 cases: 
+    // 1. no transformation and no auth error
     open(uploadResult.secure_url);
-    // expect a 401/404 because the strict transform is enabled
-    let url = cloudinary.url(`${uploadResult.public_id}`, {})
+
+    // as long as format is included in URL this is not a transformation
+    let url = cloudinary.url(`${uploadResult.public_id}`, {
+      format: `${uploadResult.format}`
+    })
     console.log("cloudinary url:",url)
-    // auth error
+    // 2. original format included in Cloudinary URL config - no transformation
+    // no auth error
+    open(url)
+
+    // expect a 401/404 because the strict transform is enabled
+    // this will be considered a transformation
+    url = cloudinary.url(`${uploadResult.public_id}`, {})
+    console.log("cloudinary url:",url)
+    // 3. auth error due to transformation of leaving out format
     open(url)
   })
   .catch(error => console.error(error));
