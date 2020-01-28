@@ -8,17 +8,13 @@ block content
   div#upload_widget_opener
 
   script(type="text/javascript").
-    const CLOUDNAME = "picturecloud7";
-    const API_KEY = "944887911222188";
-    const USERNAME = "rebeccapeltz@gmail.com";
-
     document.addEventListener(
         "DOMContentLoaded",
         e => {
           $("#upload_widget_opener").cloudinary_upload_widget(
             {
-              cloudName: CLOUDNAME,
-              apiKey: API_KEY,
+              cloudName: "#{cloudname}",
+              apiKey: "#{apikey}",
               cropping: false,
               uploadSignature: "#{signature}",
               uploadSignatureTimestamp: "#{timestamp}",

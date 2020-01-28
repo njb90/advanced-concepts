@@ -9,7 +9,14 @@ router.get('/', function (req, res, next) {
   var shasum = crypto.createHash('sha256');
   shasum.update(str_to_sign);
   var signature = shasum.digest('hex');
-  res.render('index', { title: 'Media Library Signed', timestamp: timestamp, signature: signature });
+  res.render('index', { 
+    title: 'Media Library Signed', 
+    timestamp: timestamp, 
+    signature: signature,
+    username: process.env.USERNAME,
+    apikey: process.env.API_KEY,
+    cloudname: process.env.CLOUD_NAME
+  });
 
   // res.render('index', { title: 'ML Signed'});
 

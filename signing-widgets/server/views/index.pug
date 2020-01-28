@@ -8,14 +8,11 @@ block content
   button#ml-button
 
   script(type="text/javascript").
-    const CLOUDNAME = "picturecloud7";
-    const API_KEY = "944887911222188";
-    const USERNAME = "rebeccapeltz@gmail.com";
 
     this.mlWidget = cloudinary.createMediaLibrary({
-      cloud_name: CLOUDNAME,
-      api_key: API_KEY,
-      username: USERNAME,
+      cloud_name: "#{cloudname}",
+      api_key: "#{apikey}",
+      username: "#{username}",
       timestamp: "#{timestamp}",
       signature: "#{signature}",
       button_class: "myBtn",
