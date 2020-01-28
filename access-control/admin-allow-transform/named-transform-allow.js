@@ -1,6 +1,8 @@
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
 const open = require('open')
+// Strict transformations enabled
+// create/update named transformation and "allow-for-strict"
 
 //create some promises
 

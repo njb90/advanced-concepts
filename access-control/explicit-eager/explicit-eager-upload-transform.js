@@ -1,36 +1,24 @@
 require('dotenv').config();
 const cloudinary = require('cloudinary').v2;
-const open = require('open')
 
+// Strict transformations enabled
 // explicit method using eager parameter to create a transformation
-cloudinary.uploader.explicit("shark",
+// creates a disabled "Disallowed" transform
+// aleady uploaded assets require that public id and type be provided
+cloudinary.uploader.explicit("killer-whale",
   {
-    type: "upload",
+    type: "upload",  
     eager: [{
       width: 400,
       height: 400,
       quality: "auto",
       fetch_format: "auto",
-      crop: "mfit"
+      crop: "mfit",
+      invalidate: true
     }]
   },
-  function (error, result) { 
-    
+  function (error, result) {
+    console.log("error", error)
+    console.log("result", result)
 
-    //create a url with the eagerly created transformation
-    //from above
-    //expect that this will return the transform 200 
-    //need to sign the url whether type above is "upload" or "private"
-
-    let url = cloudinary.url("shark",{
-      width: 400,
-      height: 400,
-      quality: "auto",
-      format: `${result.format}`,
-      crop: "mfit"
-        })
-    console.log(result, error); 
-    console.log(url)
-    open(url)
-  
   });
