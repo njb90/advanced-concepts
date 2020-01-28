@@ -4,17 +4,19 @@ const open = require('open')
 // Strict transformations enabled
 // create/update named transformation and "allow-for-strict"
 
-//create some promises
 
 // promise to get an named transformation that includes a name param
 const getNamedTransformation = (name) => {
   return new Promise((resolve, reject) => {
     cloudinary.api.transformations({ named: true }, function (error, result) {
-      if (error) reject(error);
+      if (error) return reject(error);
       else {
+        console.log("all named transformation:", result.transformations)
         for (let transform of result.transformations) {
+          // named transformation are saved as "t_<name of transformation>"
           if (transform.name.includes(name)) {
-            resolve(transform);
+            console.log("found name ", name)
+            return resolve(transform);
           }
         }
         reject(new Error("Transformation not found"))
@@ -30,7 +32,7 @@ const createNamedTransform = (name, options) => {
     cloudinary.api.create_transformation(name,
       options, function (error, result) {
         if (error) throw reject(error);
-        else resolve(result);
+        else return resolve(result);
       })
   })
 }
@@ -42,8 +44,8 @@ const updateTransformationAllowed = (name) => {
 
     cloudinary.api.update_transformation(name,
       { allowed_for_strict: true }, function (error, result) {
-        if (error) reject(error);
-        else resolve(result)
+        if (error) return reject(error);
+        else return resolve(result)
 
       })
   })
@@ -51,17 +53,19 @@ const updateTransformationAllowed = (name) => {
 // main logic
 //get the transformation if it exists
 const name = "auto-400-xform"
+console.log("name", name);
 
 // get transform if it includes name
+// named transforms have the format t_<name>
 getNamedTransformation(`${name}`)
   .then(result => {
-    console.log("success", result)
+    console.log("success getting tranformation", result)
     // do nothing if it already allows for transformation
     // otherwise update to allow for transformation
     if (result.allowed_for_strict !== true) {
-      updateTransformationAllowed(`t_${name}`)
+      updateTransformationAllowed(`${name}`)
         .then(result => [
-          console.log("success", result)
+          console.log("success updating allow Transformation", result)
         ])
         .catch(error => {
           console.log("fail", error)
@@ -78,12 +82,12 @@ getNamedTransformation(`${name}`)
       fetch_format: "auto",
       allowed_for_strict: true
     })
-    .then(result=>[
-      console.log("success creating new named transforma",result)
-    ])
-    .catch(error=>{
-      console.log("failed to create new named transform",error);
-    })
+      .then(result => [
+        console.log("success creating new named transforma", result)
+      ])
+      .catch(error => {
+        console.log("failed to create new named transform", error);
+      })
   })
 
 
