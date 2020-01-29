@@ -1,7 +1,7 @@
-const cloudName = "picturecloud7";
-const uploadPreset = "bp_test_1";
-const apiKey = "944887911222188";
-const useremail = "rebeccapeltz@gmail.com";
+const cloudName = "<your cloud name>";
+const uploadPreset = "<your unsigned upload preset>";
+const apiKey = "<your api key>";
+const useremail = "<your user name email>";
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log(cloudinary);
