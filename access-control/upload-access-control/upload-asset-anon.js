@@ -3,8 +3,14 @@ const cloudinary = require('cloudinary').v2;
 const open = require('open');
 
 const today = new Date().toISOString();
-const oneyearfromtoday = new Date(new Date().setFullYear(new Date().getFullYear() + 1)).toISOString();
 
+const addDays = days=>{
+  let currentDate = new Date();
+  return new Date(currentDate.getFullYear(),currentDate.getMonth(),currentDate.getDate()+days);
+}
+// set to expire after 1 day
+const enddate = addDays(1).toISOString();
+console.log('oneweekfromtoday',enddate);
 
 
 cloudinary.uploader.upload('http://images.pexels.com/photos/3068179/pexels-photo-3068179.jpeg', {
@@ -12,7 +18,8 @@ cloudinary.uploader.upload('http://images.pexels.com/photos/3068179/pexels-photo
   type: "upload",
   overwrite: true,
   "access_control": [
-    { access_type: "anonymous", start: today, end: oneyearfromtoday }],
+    { access_type: "anonymous", start: today, end: enddate }
+  ]
 })
   .then(uploadResult => {
     console.log(uploadResult)
