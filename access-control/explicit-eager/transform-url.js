@@ -7,8 +7,8 @@ const open = require('open')
 
 // signing works but do you have to sign?
 // let url = cloudinary.url("killer-whale", {
-//   width: 400,
-//   height: 400,
+//   width: 300,
+//   height: 300,
 //   quality: "auto",
 //   fetch_format: "auto",
 //   crop: "mfit",
