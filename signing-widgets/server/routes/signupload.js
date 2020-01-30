@@ -6,7 +6,8 @@ const signature = require('../modules/signupload');
 router.get('/', function (req, res, next) {
   let sig = signature.signupload();
   res.json({
-    signature: sig.signature
+    signature: sig.signature,
+    timestamp: sig.timestamp
   });
 });
 module.exports = router;

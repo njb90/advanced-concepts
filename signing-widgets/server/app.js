@@ -3,9 +3,9 @@ var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
 
-var indexRouter = require('./routes/index');
+var mlRouter = require('./routes/ml');
 var uploadRouter = require('./routes/upload');
-var signmedialibRouter = require('./routes/signmedialib');
+var signmedialibRouter = require('./routes/signml');
 var signuploadRouter = require('./routes/signupload');
 
 
@@ -20,7 +20,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // index route renders the media library component
-app.use('/', indexRouter);
+app.use('/ml', mlRouter);
 // upload route renders the upload library component
 app.use('/upload', uploadRouter);
 
@@ -30,6 +30,8 @@ app.use('/api/signml',signmedialibRouter);
 // upload signing API
 app.use('/api/signupload', signuploadRouter);
 
+// static files 
+app.use(express.static('public'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
