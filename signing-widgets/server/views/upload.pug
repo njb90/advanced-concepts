@@ -2,9 +2,11 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
-  p #{timestamp}
-  p #{signature}
+ 
+  h2 Welcome to #{title}
+  p Timestamp: #{timestamp}
+  p Signature: #{signature}
+  div
   div#upload_widget_opener
 
   script(type="text/javascript").

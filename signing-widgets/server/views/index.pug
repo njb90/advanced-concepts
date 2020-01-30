@@ -3,8 +3,9 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-  p #{timestamp}
-  p #{signature}
+  p Timestamp: #{timestamp}
+  p Signature: #{signature}
+  div
   button#ml-button
 
   script(type="text/javascript").
@@ -15,8 +16,8 @@ block content
       username: "#{username}",
       timestamp: "#{timestamp}",
       signature: "#{signature}",
-      button_class: "myBtn",
-      button_caption: "Select Image or Video",
+      button_class: "ml-btn",
+      button_caption: "Open Media Library",
       insert_transformation: true
       }, 
       {
