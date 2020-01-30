@@ -9,8 +9,8 @@ cloudinary.uploader.explicit("killer-whale",
   {
     type: "upload",  
     eager: [{
-      width: 400,
-      height: 400,
+      width: 300,
+      height: 300,
       quality: "auto",
       fetch_format: "auto",
       crop: "mfit",
