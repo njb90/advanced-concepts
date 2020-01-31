@@ -19,20 +19,17 @@ document.addEventListener("DOMContentLoaded", function (event) {
   }
 
   var generateSignature = function (callback) {
-    $.ajax({
-      url: '//localhost:3000/api/signupload',
-      type: 'GET',
-      dataType: 'json',
-      complete: function () {
-        console.log("complete")
-      },
-      success: function (result, textStatus, xhr) {
-        callback(result);
-      },
-      error: function (xhr, status, error) {
-        console.log(xhr, status, error);
-      }
-    });
-  }
+    fetch('//localhost:3000/api/signupload')
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        callback(result)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  };
   generateSignature(uploadFn);
 })

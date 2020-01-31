@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       button_caption: "Open Media Library",
       insert_transformation: true,
     };
-    // console.log(result.signature)
-    // console.log(result.timestamp)
     window.mlWidget = cloudinary.createMediaLibrary(
       config,
       {
@@ -27,20 +25,17 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   var generateSignature = function (callback) {
-    $.ajax({
-      url: '//localhost:3000/api/signml',
-      type: 'GET',
-      dataType: 'json',
-      complete: function () {
-        console.log("complete")
-      },
-      success: function (result, textStatus, xhr) {
-        callback(result);
-      },
-      error: function (xhr, status, error) {
-        console.log(xhr, status, error);
-      }
-    });
-  }
+    fetch('//localhost:3000/api/signml')
+      .then((response) => {
+        return response.json();
+      })
+      .then((result) => {
+        console.log(result);
+        callback(result)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  };
   generateSignature(mlFn);
 })
