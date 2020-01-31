@@ -2,9 +2,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // called after successfully retrieving upload signature
   var mlFn = function (result, textStatus, xhr) {
     let config = {
-      cloud_name: 'picturecloud7',
-      api_key: '944887911222188',
-      username: 'rebeccapeltz@gmail.com',
+      cloud_name: '<cloud_name>',
+      api_key: '<api_key>',
+      username: '<user name email>',
       timestamp: result.timestamp,
       signature: result.signature,
       button_class: "ml-btn",

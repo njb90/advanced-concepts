@@ -3,15 +3,47 @@
 ## Media Library Widget
 http://localhost/
 
-## Upload Widget
-http://localhost/upload
+## Routes 
+
+**Static**
+
+http://localhost:3000/index.html  
+
+**Server Rendered**  
+http://localhost:3000/upload    
+http://localhost:3000/ml  
+
+**Data APIs with signature and timestamp**  
+http://localhost:3000/api/signupload  
+http://localhost:3000/api/signml  
+
+## Modify Static JavaScript
+
+### Media library client code
+
+public/js/ml-client.js  
+```
+cloud_name: '<cloud_name>',
+api_key: '<api_key>',
+username: '<user name email>',
+```
+
+pubic/js/upload-client.js
+```
+cloudName: '<cloud_name>',
+apiKey: '<api_key>',
+```
+
+
+
+## environmental variables
 
 create .env directory in this containing values from Console Dashboard  
 ```
-CLOUD_NAME=''
-USERNAME=''  this is an email
-API_SECRET=''
-API_KEY=''
+CLOUD_NAME='<cloud_name>'
+USERNAME='<user email>'  this is an email
+API_SECRET='api_secret'
+API_KEY='api_key'
 PORT=3000
 ```
 
