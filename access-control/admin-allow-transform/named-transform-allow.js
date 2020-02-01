@@ -4,91 +4,81 @@ const open = require('open')
 // Strict transformations enabled
 // create/update named transformation and "allow-for-strict"
 
-
-// promise to get an named transformation that includes a name param
-const getNamedTransformation = (name) => {
-  return new Promise((resolve, reject) => {
-    cloudinary.api.transformations({ named: true }, function (error, result) {
-      if (error) return reject(error);
-      else {
-        console.log("all named transformation:", result.transformations)
-        for (let transform of result.transformations) {
-          // named transformation are saved as "t_<name of transformation>"
-          if (transform.name.includes(name)) {
-            console.log("found name ", name)
-            return resolve(transform);
-          }
+// return a transformation if it exists
+async function getNamedTransformation(name) {
+  let result = null;
+  try {
+    let response = await cloudinary.api.transformations({ named: true });
+    if (response.transformations) {
+      for (let transform of response.transformations) {
+        // named transformation are saved as "t_<name of transformation>"
+        if (transform.name === `t_${name}`) {
+          result = transform;
+          break;
         }
-        reject(new Error("Transformation not found"))
       }
-    })
-  })
+    }
+    return result;
+  }
+  catch (error) {
+    console.log(error)
+  }
 }
 
-// promise to create a new named transfrom base on a name and options
-// options should include "allowed for strict: true"
-const createNamedTransform = (name, options) => {
-  return new Promise((resolve, reject) => {
-    cloudinary.api.create_transformation(name,
-      options, function (error, result) {
-        if (error) throw reject(error);
-        else return resolve(result);
-      })
-  })
+// create a named transformation
+async function createNamedTransform(name, options) {
+  try {
+    let response = await cloudinary.api.create_transformation(name, options);
+    return response;
+  } catch (error) {
+    throw error;
+  }
 }
 
-// promise to update a named transformation to allowed for strict
-// if the transform exists but doesn't have this name
-const updateTransformationAllowed = (name) => {
-  return new Promise((resolve, reject) => {
-
-    cloudinary.api.update_transformation(name,
-      { allowed_for_strict: true }, function (error, result) {
-        if (error) return reject(error);
-        else return resolve(result)
-
-      })
-  })
+// update a transformation
+async function updateTransformationAllowed(name) {
+  try {
+    let response = await cloudinary.api.update_transformation(name, { allowed_for_strict: true });
+    return response;
+  } catch (error) {
+    throw error;
+  }
 }
-// main logic
-//get the transformation if it exists
-const name = "auto-400-xform"
-console.log("name", name);
 
+
+// logice - see if transform already exists
+//  if it existes check that its allowed for strict
+//     if not allowed for strict update it to allow for strict
+//  if it doesn't exist create it
 // get transform if it includes name
 // named transforms have the format t_<name>
-getNamedTransformation(`${name}`)
-  .then(result => {
-    console.log("success getting tranformation", result)
-    // do nothing if it already allows for transformation
-    // otherwise update to allow for transformation
-    if (result.allowed_for_strict !== true) {
-      updateTransformationAllowed(`${name}`)
-        .then(result => [
-          console.log("success updating allow Transformation", result)
-        ])
-        .catch(error => {
-          console.log("fail", error)
-        })
-    }
-  })
-  .catch(error => {
-    console.log("named transform doesn't exist", error);
-    // if it doesn't exist, create it and allow for transformation
-    createNamedTransform(name, {
-      width: 400,
-      height: 400,
-      quality: "auto",
-      fetch_format: "auto",
-      allowed_for_strict: true
-    })
-      .then(result => [
-        console.log("success creating new named transforma", result)
-      ])
-      .catch(error => {
-        console.log("failed to create new named transform", error);
-      })
-  })
 
+async function main(name) {
+  try {
+    let result = await getNamedTransformation(name);
+    if (result) {
+      console.log("transformation exists");
+      if (!result.allowed_for_strict) {
+        console.log("updating transformation");
+        await updateTransformationAllowed(name);
+      }
+    } else {
+      console.log("creating tranformation");
+      await createNamedTransform(name, {
+        width: 400,
+        height: 400,
+        quality: "auto",
+        fetch_format: "auto",
+        allowed_for_strict: true
+      });
+    }
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// run the logic
+const name = "auto-400-xform"
+main(name)
 
 
